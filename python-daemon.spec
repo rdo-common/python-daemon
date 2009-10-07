@@ -1,8 +1,9 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
+%{!?pyver: %define pyver %(%{__python} -c "import sys ; print sys.version[:3]")}
 
 Name:           python-daemon
-Version:        1.4.6
-Release:        2%{?dist}
+Version:        1.5.1
+Release:        1%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -31,20 +32,28 @@ This library implements the well-behaved daemon specification of PEP 3143,
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+rm -rf %{buildroot}
+%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+rm -fr %{buildroot}%{python_sitelib}/tests
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
+# Test suite requires minimock and lockfile
+#%check
+#PYTHONPATH=$(pwd) nosetest
 
 %files
 %defattr(-,root,root,-)
 %doc TODO LICENSE.PSF-2
-%{python_sitelib}/*
-
+%{python_sitelib}/daemon/
+%{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Wed Oct 07 2009 Luke Macken <lmacken@redhat.com> - 1.5.1-1
+- Update to 1.5.1
+- Remove conflicting files (#512760)
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.6-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
