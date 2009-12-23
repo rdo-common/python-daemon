@@ -44,7 +44,7 @@ PYTHONPATH=$(pwd) nosetests
 
 %files
 %defattr(-,root,root,-)
-%doc TODO LICENSE.PSF-2
+%doc LICENSE.PSF-2
 %{python_sitelib}/daemon/
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
