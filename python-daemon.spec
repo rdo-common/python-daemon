@@ -2,8 +2,8 @@
 %{!?pyver: %define pyver %(%{__python} -c "import sys ; print sys.version[:3]")}
 
 Name:           python-daemon
-Version:        1.5.1
-Release:        2%{?dist}
+Version:        1.5.2
+Release:        1%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -49,6 +49,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Wed Dec 23 2009 Thomas Spura <tomspur@fedoraproject.org> - 1.5.2-1
+- update to 1.5.2
+
 * Wed Dec 23 2009 Thomas Spura <tomspur@fedoraproject.org> - 1.5.1-2
 - add missing BR: minimock and lockfile -> testsuite works again
 - remove patch, use sed instead
