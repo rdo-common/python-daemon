@@ -14,7 +14,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 BuildRequires:  python-devel, python-setuptools
-BuildRequires:  python-lockfile python-minimock
+BuildRequires:  python-nose python-lockfile python-minimock
 
 %description
 This library implements the well-behaved daemon specification of PEP 3143,
@@ -50,6 +50,7 @@ PYTHONPATH=$(pwd) nosetests
 
 %changelog
 * Wed Dec 23 2009 Thomas Spura <tomspur@fedoraproject.org> - 1.5.2-1
+- add missing BR: python-nose
 - update to 1.5.2
 
 * Wed Dec 23 2009 Thomas Spura <tomspur@fedoraproject.org> - 1.5.1-2
