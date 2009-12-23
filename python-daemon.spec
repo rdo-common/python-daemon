@@ -3,18 +3,18 @@
 
 Name:           python-daemon
 Version:        1.5.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
 License:        Python
 URL:            http://pypi.python.org/pypi/python-daemon/
 Source0:        http://pypi.python.org/packages/source/p/python-daemon/%{name}-%{version}.tar.gz
-Patch0:         version_info_fix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 BuildRequires:  python-devel, python-setuptools
+BuildRequires:  python-lockfile python-minimock
 
 %description
 This library implements the well-behaved daemon specification of PEP 3143,
@@ -23,8 +23,7 @@ This library implements the well-behaved daemon specification of PEP 3143,
 %prep
 %setup -q
 
-%patch0 -p1
-
+sed -i -e '/^#!\//, 1d' daemon/version/version_info.py
 
 
 %build
@@ -40,8 +39,8 @@ rm -fr %{buildroot}%{python_sitelib}/tests
 rm -rf %{buildroot}
 
 # Test suite requires minimock and lockfile
-#%check
-#PYTHONPATH=$(pwd) nosetest
+%check
+PYTHONPATH=$(pwd) nosetests
 
 %files
 %defattr(-,root,root,-)
@@ -50,6 +49,10 @@ rm -rf %{buildroot}
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Wed Dec 23 2009 Thomas Spura <tomspur@fedoraproject.org> - 1.5.1-2
+- add missing BR: minimock and lockfile -> testsuite works again
+- remove patch, use sed instead
+
 * Wed Oct 07 2009 Luke Macken <lmacken@redhat.com> - 1.5.1-1
 - Update to 1.5.1
 - Remove conflicting files (#512760)
