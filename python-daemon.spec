@@ -3,7 +3,7 @@
 
 Name:           python-daemon
 Version:        1.5.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -50,6 +50,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 1.5.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+
 * Wed Dec 23 2009 Thomas Spura <tomspur@fedoraproject.org> - 1.5.2-1
 - add missing BR: python-nose
 - also add lockfile as R (bug #513546)
