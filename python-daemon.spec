@@ -3,7 +3,7 @@
 
 Name:           python-daemon
 Version:        1.5.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -50,6 +50,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.5.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 1.5.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
