@@ -1,20 +1,18 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?pyver: %define pyver %(%{__python} -c "import sys ; print sys.version[:3]")}
 
 Name:           python-daemon
-Version:        1.5.2
-Release:        3%{?dist}
+Version:        1.6
+Release:        1%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
 License:        Python
 URL:            http://pypi.python.org/pypi/python-daemon/
 Source0:        http://pypi.python.org/packages/source/p/python-daemon/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
 BuildRequires:  python-devel, python-setuptools
-BuildRequires:  python-nose python-lockfile python-minimock
+BuildRequires:  python-lockfile python-minimock
 Requires:       python-lockfile
 
 %description
@@ -32,24 +30,24 @@ sed -i -e '/^#!\//, 1d' daemon/version/version_info.py
 
 
 %install
-rm -rf %{buildroot}
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 rm -fr %{buildroot}%{python_sitelib}/tests
 
-%clean
-rm -rf %{buildroot}
 
 # Test suite requires minimock and lockfile
-%check
-PYTHONPATH=$(pwd) nosetests
+#Disabled tests as pidlockfile is not anymore in the lastest python-lockfile
+#%check
+#PYTHONPATH=$(pwd) nosetests
 
 %files
-%defattr(-,root,root,-)
 %doc LICENSE.PSF-2
 %{python_sitelib}/daemon/
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Thu Jul 14 2011 Kushal Das <kushal@fedoraproject.org> - 1.6-1
+- New release of source
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.5.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
