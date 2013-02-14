@@ -2,7 +2,7 @@
 
 Name:           python-daemon
 Version:        1.6
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -45,6 +45,9 @@ rm -fr %{buildroot}%{python_sitelib}/tests
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
+
 * Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
