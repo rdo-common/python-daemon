@@ -2,7 +2,7 @@
 
 Name:           python-daemon
 Version:        1.6
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -12,6 +12,7 @@ Source0:        http://pypi.python.org/packages/source/p/python-daemon/%{name}-%
 
 BuildArch:      noarch
 BuildRequires:  python-devel, python-setuptools
+BuildRequires:  python-nose
 BuildRequires:  python-lockfile python-minimock
 Requires:       python-lockfile
 
@@ -35,9 +36,8 @@ rm -fr %{buildroot}%{python_sitelib}/tests
 
 
 # Test suite requires minimock and lockfile
-#Disabled tests as pidlockfile is not anymore in the lastest python-lockfile
-#%check
-#PYTHONPATH=$(pwd) nosetests
+%check
+PYTHONPATH=$(pwd) nosetests
 
 %files
 %doc LICENSE.PSF-2
@@ -45,6 +45,9 @@ rm -fr %{buildroot}%{python_sitelib}/tests
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Mon Aug  4 2014 Thomas Spura <tomspur@fedoraproject.org> - 1.6-7
+- enable tests again as lockfile was fixed
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
