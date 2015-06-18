@@ -2,7 +2,7 @@
 
 Name:           python-daemon
 Version:        1.6
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -45,6 +45,9 @@ PYTHONPATH=$(pwd) nosetests
 %{python_sitelib}/python_daemon-%{version}-py%{pyver}.egg-info/
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon Aug  4 2014 Thomas Spura <tomspur@fedoraproject.org> - 1.6-7
 - enable tests again as lockfile was fixed
 
