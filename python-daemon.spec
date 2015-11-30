@@ -9,7 +9,7 @@
 %endif
 
 Name:           python-daemon
-Version:        2.0.6
+Version:        2.1.0
 Release:        1%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
@@ -107,7 +107,7 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
-* Sat Nov 14 2015 Toshio Kuratomi <toshio@fedoraproject.org> - - 2.0.6-1
+* Mon Nov 30 2015 Toshio Kuratomi <toshio@fedoraproject.org> - - 2.1.0-1
 - Update to newer upstream.
 - Create a python3 subpackage since upstream supports it
 - Note that newer upstream has relicensed to Apache 2.0
