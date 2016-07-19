@@ -10,7 +10,7 @@
 
 Name:           python-daemon
 Version:        2.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -107,6 +107,9 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.1-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Sun Apr 10 2016 Kevin Fenzi <kevin@scrye.com> - 2.1.1-1
 - Update to 2.1.1. Fixes bug #1234933
 
