@@ -9,16 +9,15 @@
 %endif
 
 Name:           python-daemon
-Version:        2.1.1
-Release:        2%{?dist}
+Version:        2.1.2
+Release:        1%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
 # Some build scripts and test franework are licensed GPLv3+ but htose aren't shipped
 License:        ASL2.0
 URL:            http://pypi.python.org/pypi/python-daemon/
-Source0:        http://pypi.python.org/packages/source/p/python-daemon/%{name}-%{version}.tar.gz
-Patch0: python-daemon-mock.patch
+Source0:        https://pagure.io/releases/python-daemon/python-daemon-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python-devel, python-setuptools
@@ -56,8 +55,6 @@ This is the python3 version of the library.
 
 %prep
 %setup -q
-
-%patch0 -p1
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -107,6 +104,9 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Wed Nov 09 2016 Kevin Fenzi <kevin@scrye.com> - 2.1.2-1
+- Update to 2.1.2. Fixes bug #1389593
+
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.1-2
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
