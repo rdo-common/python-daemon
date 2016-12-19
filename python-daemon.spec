@@ -10,7 +10,7 @@
 
 Name:           python-daemon
 Version:        2.1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -104,6 +104,9 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 2.1.2-2
+- Rebuild for Python 3.6
+
 * Wed Nov 09 2016 Kevin Fenzi <kevin@scrye.com> - 2.1.2-1
 - Update to 2.1.2. Fixes bug #1389593
 
