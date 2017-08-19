@@ -10,7 +10,7 @@
 
 Name:           python-daemon
 Version:        2.1.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -33,13 +33,21 @@ BuildRequires:  python3-lockfile
 BuildRequires:  python3-mock
 BuildRequires:  python3-testtools
 %endif
-Requires:       python-lockfile
 
-%description
-This library implements the well-behaved daemon specification of PEP 3143,
-"Standard daemon process library".
-
+%global _description\
+This library implements the well-behaved daemon specification of PEP 3143,\
+"Standard daemon process library".\
+\
 This is the python2 version of the library.
+
+%description %_description
+
+%package -n python2-daemon
+Summary: %summary
+Requires:       python-lockfile
+%{?python_provide:%python_provide python2-daemon}
+
+%description -n python2-daemon %_description
 
 %if 0%{?with_python3}
 %package -n python3-daemon
@@ -91,7 +99,7 @@ pushd %{py3dir}
 PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
-%files
+%files -n python2-daemon
 %license LICENSE.ASF-2
 %{python2_sitelib}/daemon/
 %{python2_sitelib}/python_daemon-%{version}-py%{python2_version}.egg-info/
@@ -104,6 +112,10 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Sat Aug 19 2017 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 2.1.2-5
+- Python 2 binary package renamed to python2-daemon
+  See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3
+
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.2-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
