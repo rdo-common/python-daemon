@@ -10,7 +10,7 @@
 
 Name:           python-daemon
 Version:        2.1.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -22,9 +22,9 @@ Source0:        https://pagure.io/releases/python-daemon/python-daemon-%{version
 BuildArch:      noarch
 BuildRequires:  python-devel, python-setuptools
 BuildRequires:  python-testscenarios
+BuildRequires:  python2-docutils
 BuildRequires:  python-lockfile
 BuildRequires:  python-mock
-BuildRequires:  python-docutils
 %if 0%{?with_python3}
 BuildRequires:  python3-devel, python3-setuptools
 BuildRequires:  python3-testscenarios
@@ -45,6 +45,7 @@ This is the python2 version of the library.
 %package -n python2-daemon
 Summary: %summary
 Requires:       python-lockfile
+Requires:       python2-docutils
 %{?python_provide:%python_provide python2-daemon}
 
 %description -n python2-daemon %_description
@@ -53,6 +54,7 @@ Requires:       python-lockfile
 %package -n python3-daemon
 Summary:        Library to implement a well-behaved Unix daemon process
 Requires:       python3-lockfile
+Requires:       python3-docutils
 
 %description -n python3-daemon
 This library implements the well-behaved daemon specification of PEP 3143,
@@ -112,6 +114,9 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Sun Dec 17 2017 Kevin Fenzi <kevin@scrye.com> - 2.1.2-6
+- Add dep on python2-docutils. Fixes bug #1478196
+
 * Sat Aug 19 2017 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 2.1.2-5
 - Python 2 binary package renamed to python2-daemon
   See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3
