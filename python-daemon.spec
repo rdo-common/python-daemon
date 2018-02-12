@@ -10,7 +10,7 @@
 
 Name:           python-daemon
 Version:        2.1.2
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 Group:          Development/Languages
@@ -20,11 +20,11 @@ URL:            http://pypi.python.org/pypi/python-daemon/
 Source0:        https://pagure.io/releases/python-daemon/python-daemon-%{version}.tar.gz
 
 BuildArch:      noarch
-BuildRequires:  python-devel, python-setuptools
-BuildRequires:  python-testscenarios
+BuildRequires:  python2-devel, python2-setuptools
+BuildRequires:  python2-testscenarios
 BuildRequires:  python2-docutils
-BuildRequires:  python-lockfile
-BuildRequires:  python-mock
+BuildRequires:  python2-lockfile
+BuildRequires:  python2-mock
 %if 0%{?with_python3}
 BuildRequires:  python3-devel, python3-setuptools
 BuildRequires:  python3-testscenarios
@@ -44,7 +44,7 @@ This is the python2 version of the library.
 
 %package -n python2-daemon
 Summary: %summary
-Requires:       python-lockfile
+Requires:       python2-lockfile
 Requires:       python2-docutils
 %{?python_provide:%python_provide python2-daemon}
 
@@ -114,6 +114,10 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Mon Feb 12 2018 Iryna Shcherbina <ishcherb@redhat.com> - 2.1.2-8
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.2-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
