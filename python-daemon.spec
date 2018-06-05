@@ -22,8 +22,8 @@ Source0:        https://files.pythonhosted.org/packages/source/p/%{name}/%{name}
 BuildArch:      noarch
 BuildRequires:  python2-devel, python2-setuptools
 BuildRequires:  python2-testscenarios
-BuildRequires:  python2-docutils
-BuildRequires:  python2-lockfile
+BuildRequires:  python-docutils
+BuildRequires:  python-lockfile
 BuildRequires:  python2-mock
 %if 0%{?with_python3}
 BuildRequires:  python3-devel, python3-setuptools
@@ -44,8 +44,8 @@ This is the python2 version of the library.
 
 %package -n python2-daemon
 Summary: %summary
-Requires:       python2-lockfile
-Requires:       python2-docutils
+Requires:       python-lockfile
+Requires:       python-docutils
 %{?python_provide:%python_provide python2-daemon}
 
 %description -n python2-daemon %_description
