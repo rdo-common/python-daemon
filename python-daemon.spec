@@ -13,7 +13,6 @@ Version:        2.1.2
 Release:        10%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
-Group:          Development/Languages
 # Some build scripts and test franework are licensed GPLv3+ but htose aren't shipped
 License:        ASL2.0
 URL:            http://pypi.python.org/pypi/python-daemon/
