@@ -10,7 +10,7 @@
 
 Name:           python-daemon
 Version:        2.1.2
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 # Some build scripts and test franework are licensed GPLv3+ but htose aren't shipped
@@ -113,6 +113,9 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.2-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.2-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
