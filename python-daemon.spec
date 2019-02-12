@@ -9,14 +9,15 @@
 %endif
 
 Name:           python-daemon
-Version:        2.1.2
-Release:        11%{?dist}
+Version:        2.2.3
+Release:        1%{?dist}
 Summary:        Library to implement a well-behaved Unix daemon process
 
 # Some build scripts and test franework are licensed GPLv3+ but htose aren't shipped
 License:        ASL2.0
 URL:            http://pypi.python.org/pypi/python-daemon/
-Source0:        https://pagure.io/releases/python-daemon/python-daemon-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/%{name}/%{name}-%{version}.tar.gz
+
 
 BuildArch:      noarch
 BuildRequires:  python2-devel, python2-setuptools
@@ -113,6 +114,9 @@ PYTHONPATH=$(pwd) %{__python3} -m unittest discover
 %endif
 
 %changelog
+* Tue Feb 12 2019 Alfredo Moralejo <amoralej@redhat.com> - 2.2.3-1
+- Update to 2.2.3
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.2-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
